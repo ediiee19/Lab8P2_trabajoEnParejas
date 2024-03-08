@@ -362,19 +362,16 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
         jPanel9.add(PN_salirAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 16, 20, -1));
 
-        JL_listaParticipantes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        JL_listaParticipantes.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(JL_listaParticipantes);
 
         jPanel9.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 118, 222, 311));
 
-        JL_listaTorneosAdmin.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        JL_listaTorneosAdmin.setModel(new DefaultListModel());
+        JL_listaTorneosAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JL_listaTorneosAdminMouseClicked(evt);
+            }
         });
         jScrollPane2.setViewportView(JL_listaTorneosAdmin);
 
@@ -906,12 +903,14 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PN_InicioSecMouseClicked
 
     private void PN_salirAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_salirAdminMouseClicked
+        clearList(JL_listaTorneosAdmin);
+        clearList(JL_listaParticipantes);
         DG_adminMenu.setVisible(false);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }//GEN-LAST:event_PN_salirAdminMouseClicked
-
+    
     private void PN_salirPartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_salirPartMouseClicked
         DG_partMenu.setVisible(false);
         this.pack();
@@ -931,6 +930,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         DG_adminMenu.setVisible(false);
         DG_crearTorneo.pack();
         DG_crearTorneo.setLocationRelativeTo(DG_adminMenu);
+        iniciarlistas();
         DG_crearTorneo.setModal(true);
         DG_crearTorneo.setVisible(true);
     }//GEN-LAST:event_PN_pantallaCrearTorneoMouseClicked
@@ -938,6 +938,26 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private void PN_crearTorneoConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_crearTorneoConfirmMouseClicked
         crearTorneo();
     }//GEN-LAST:event_PN_crearTorneoConfirmMouseClicked
+
+    private void JL_listaTorneosAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JL_listaTorneosAdminMouseClicked
+        clearList(JL_listaParticipantes);
+        if(JL_listaTorneosAdmin.getSelectedIndex() >= 0){
+            
+            DefaultListModel model = (DefaultListModel) JL_listaParticipantes.getModel();
+            try{
+               ArrayList<Participante> part = torneos.get(
+                       JL_listaTorneosAdmin.getSelectedIndex()).getLista();
+               
+               model.addAll(part);
+
+            }catch (Exception e){
+                
+            }
+            
+            
+            
+        }
+    }//GEN-LAST:event_JL_listaTorneosAdminMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -982,7 +1002,9 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             administrador.setTorneo(torneo);
             administrador.escribirArchivo();
             torneos.add(torneo);
-        }else{
+            TF_nombreTorneo.setText("");
+            SP_rondasTrone.setValue(1);
+        } else {
             LB_valiTorneo.setText("debe tener almenos una ronda");
         }
     }
@@ -1057,8 +1079,10 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             if (usuarios.get(logedUserindex) instanceof admin) {
                 DG_adminMenu.pack();
                 DG_adminMenu.setLocationRelativeTo(this);
+                iniciarlistas();
                 DG_adminMenu.setModal(true);
                 DG_adminMenu.setVisible(true);
+                
             }
             if (usuarios.get(logedUserindex) instanceof Participante) {
                 DG_partMenu.pack();
@@ -1069,6 +1093,37 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    public void iniciarlistas() {
+
+        DefaultListModel model = (DefaultListModel) JL_listaTorneosAdmin.getModel();
+        try {
+
+            for (Torneo t : torneos) {
+
+                if (t.isEstado() == false) {
+
+                    model.addElement(t);
+
+                }
+
+            }
+        } catch (Exception e) {
+            
+        }
+        JL_listaTorneosAdmin.setModel(model);
+        
+    }
+    
+    public void clearList(JList lista){
+        
+        DefaultListModel m = (DefaultListModel) lista.getModel();
+        
+        
+        m.removeAllElements();
+        
+        
+    }
+    
     public boolean evaularInicioSec() {
         boolean entrada = false;
         boolean buscUsuario = false;

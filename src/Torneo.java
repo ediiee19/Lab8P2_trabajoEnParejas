@@ -62,4 +62,11 @@ public class Torneo implements Serializable{
     public void setRondas(int rondas) {
         this.rondas = rondas;
     }   
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
+    
 }
