@@ -1,8 +1,13 @@
 
-public class User {
+import java.io.Serializable;
+
+
+public class User implements Serializable{
   
     private String nombre, contra;
-
+    
+    private static final long SerialVersionUID = 333L;
+            
     public User() {
     }
 

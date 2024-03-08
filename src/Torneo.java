@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Torneo {
    private String nombre;
+   private int rondas;
    private ArrayList<Participante> lista;
    private boolean entrada;
    private boolean estado;
@@ -11,11 +12,12 @@ public class Torneo {
     public Torneo() {
     }
 
-    public Torneo(String nombre, ArrayList<Participante> lista, boolean entrada, boolean estado) {
+    public Torneo(String nombre, ArrayList<Participante> lista, boolean entrada, boolean estado, int rondas) {
         this.nombre = nombre;
         this.lista = lista;
         this.entrada = entrada;
         this.estado = estado;
+        this.rondas = rondas;
     }
 
     public String getNombre() {
@@ -49,6 +51,12 @@ public class Torneo {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
-   
+
+    public int getRondas() {
+        return rondas;
+    }
+
+    public void setRondas(int rondas) {
+        this.rondas = rondas;
+    }   
 }
