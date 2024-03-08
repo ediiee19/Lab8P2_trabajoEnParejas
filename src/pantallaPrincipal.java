@@ -487,20 +487,12 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
         jPanel16.add(PN_salirPart, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 16, 20, -1));
 
-        JL_listaGanados.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        JL_listaGanados.setModel(new DefaultListModel());
         jScrollPane3.setViewportView(JL_listaGanados);
 
         jPanel16.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 170, 311));
 
-        JL_listaTorneosDisp.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        JL_listaTorneosDisp.setModel(new DefaultListModel());
         jScrollPane4.setViewportView(JL_listaTorneosDisp);
 
         jPanel16.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 170, 311));
@@ -539,11 +531,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
         jPanel16.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 120, 30));
 
-        JL_listaTorneosCerrados.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        JL_listaTorneosCerrados.setModel(new DefaultListModel());
         jScrollPane5.setViewportView(JL_listaTorneosCerrados);
 
         jPanel16.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 170, 311));
@@ -953,9 +941,6 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             }catch (Exception e){
                 
             }
-            
-            
-            
         }
     }//GEN-LAST:event_JL_listaTorneosAdminMouseClicked
 
@@ -1112,6 +1097,28 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         }
         JL_listaTorneosAdmin.setModel(model);
         
+    }
+    
+    public void iniciarListaParti(){
+        
+        DefaultListModel model1 = (DefaultListModel) JL_listaTorneosDisp.getModel();
+        DefaultListModel model2 = (DefaultListModel) JL_listaTorneosCerrados.getModel();
+        DefaultListModel model3= (DefaultListModel) JL_listaGanados.getModel();
+        try {
+            
+            for (Torneo t : torneos) {
+                if (t.isEstado() == false) {
+                    if (t.isEntrada() == true) {
+                        model1.addElement(t);
+                    }
+                }
+
+            }
+            
+        }catch(Exception e){
+            
+        }
+        JL_listaTorneosDisp.setModel(model1);
     }
     
     public void clearList(JList lista){
