@@ -1,13 +1,16 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Torneo {
+public class Torneo implements Serializable{
    private String nombre;
    private int rondas;
    private ArrayList<Participante> lista;
    private boolean entrada;
    private boolean estado;
+   
+   private static final long SerialVersionUID = 555L;
 
     public Torneo() {
     }

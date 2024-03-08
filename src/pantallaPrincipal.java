@@ -6,11 +6,13 @@ import javax.swing.*;
 public class pantallaPrincipal extends javax.swing.JFrame {
 
     public ArrayList<User> usuarios;
+    public ArrayList<Torneo> torneos;
     public int logedUserindex;
 
     public pantallaPrincipal() {
         initComponents();
         inicializarUsuarios();
+        inicializarTorneos();
         this.setLocationRelativeTo(null);
         setimageLabel(LB_logoUnitec, "src/imagenes/unitec color.png");
     }
@@ -42,7 +44,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         DG_adminMenu = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
+        PN_pantallaCrearTorneo = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         PN_salirAdmin = new javax.swing.JPanel();
@@ -74,6 +76,19 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         JL_listaTorneosCerrados = new javax.swing.JList<>();
         jLabel19 = new javax.swing.JLabel();
+        DG_crearTorneo = new javax.swing.JDialog();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
+        PN_crearTorneoConfirm = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        TF_nombreTorneo = new javax.swing.JTextField();
+        SP_rondasTrone = new javax.swing.JSpinner();
+        PN_salirCrearTorneo = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        LB_valiTorneo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -284,31 +299,37 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(204, 0, 0));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel10.setBackground(new java.awt.Color(51, 51, 255));
+        PN_pantallaCrearTorneo.setBackground(new java.awt.Color(51, 51, 255));
+        PN_pantallaCrearTorneo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PN_pantallaCrearTorneo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PN_pantallaCrearTorneoMouseClicked(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Crear Torneo");
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout PN_pantallaCrearTorneoLayout = new javax.swing.GroupLayout(PN_pantallaCrearTorneo);
+        PN_pantallaCrearTorneo.setLayout(PN_pantallaCrearTorneoLayout);
+        PN_pantallaCrearTorneoLayout.setHorizontalGroup(
+            PN_pantallaCrearTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PN_pantallaCrearTorneoLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel9)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        PN_pantallaCrearTorneoLayout.setVerticalGroup(
+            PN_pantallaCrearTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PN_pantallaCrearTorneoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 130, -1));
+        jPanel8.add(PN_pantallaCrearTorneo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 130, -1));
 
-        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 578));
+        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 580));
 
         jPanel9.setBackground(new java.awt.Color(204, 204, 204));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -548,6 +569,144 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        DG_crearTorneo.setUndecorated(true);
+
+        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel18.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel18.setForeground(new java.awt.Color(204, 0, 0));
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+        );
+
+        jPanel15.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 390));
+
+        jPanel19.setBackground(new java.awt.Color(204, 204, 204));
+
+        PN_crearTorneoConfirm.setBackground(new java.awt.Color(51, 51, 255));
+        PN_crearTorneoConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PN_crearTorneoConfirm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PN_crearTorneoConfirmMouseClicked(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setText("Crear Torneo");
+
+        javax.swing.GroupLayout PN_crearTorneoConfirmLayout = new javax.swing.GroupLayout(PN_crearTorneoConfirm);
+        PN_crearTorneoConfirm.setLayout(PN_crearTorneoConfirmLayout);
+        PN_crearTorneoConfirmLayout.setHorizontalGroup(
+            PN_crearTorneoConfirmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PN_crearTorneoConfirmLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel21)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        PN_crearTorneoConfirmLayout.setVerticalGroup(
+            PN_crearTorneoConfirmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PN_crearTorneoConfirmLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel14.setText("Nombre del Torneo'");
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel20.setText("Rondas");
+
+        PN_salirCrearTorneo.setBackground(new java.awt.Color(204, 0, 0));
+        PN_salirCrearTorneo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PN_salirCrearTorneo.setPreferredSize(new java.awt.Dimension(30, 30));
+        PN_salirCrearTorneo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PN_salirCrearTorneoMouseClicked(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel22.setText("X");
+
+        javax.swing.GroupLayout PN_salirCrearTorneoLayout = new javax.swing.GroupLayout(PN_salirCrearTorneo);
+        PN_salirCrearTorneo.setLayout(PN_salirCrearTorneoLayout);
+        PN_salirCrearTorneoLayout.setHorizontalGroup(
+            PN_salirCrearTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PN_salirCrearTorneoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel22)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        PN_salirCrearTorneoLayout.setVerticalGroup(
+            PN_salirCrearTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        LB_valiTorneo.setForeground(new java.awt.Color(204, 0, 0));
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PN_salirCrearTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PN_crearTorneoConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SP_rondasTrone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(TF_nombreTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LB_valiTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PN_salirCrearTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TF_nombreTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SP_rondasTrone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(LB_valiTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(PN_crearTorneoConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
+        );
+
+        jPanel15.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 390, 390));
+
+        javax.swing.GroupLayout DG_crearTorneoLayout = new javax.swing.GroupLayout(DG_crearTorneo.getContentPane());
+        DG_crearTorneo.getContentPane().setLayout(DG_crearTorneoLayout);
+        DG_crearTorneoLayout.setHorizontalGroup(
+            DG_crearTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        DG_crearTorneoLayout.setVerticalGroup(
+            DG_crearTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
@@ -760,6 +919,26 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         this.setVisible(true);
     }//GEN-LAST:event_PN_salirPartMouseClicked
 
+    private void PN_salirCrearTorneoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_salirCrearTorneoMouseClicked
+        DG_crearTorneo.setVisible(false);
+        DG_adminMenu.pack();
+        DG_adminMenu.setLocationRelativeTo(this);
+        DG_adminMenu.setModal(true);
+        DG_adminMenu.setVisible(true);
+    }//GEN-LAST:event_PN_salirCrearTorneoMouseClicked
+
+    private void PN_pantallaCrearTorneoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_pantallaCrearTorneoMouseClicked
+        DG_adminMenu.setVisible(false);
+        DG_crearTorneo.pack();
+        DG_crearTorneo.setLocationRelativeTo(DG_adminMenu);
+        DG_crearTorneo.setModal(true);
+        DG_crearTorneo.setVisible(true);
+    }//GEN-LAST:event_PN_pantallaCrearTorneoMouseClicked
+
+    private void PN_crearTorneoConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_crearTorneoConfirmMouseClicked
+        crearTorneo();
+    }//GEN-LAST:event_PN_crearTorneoConfirmMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -790,6 +969,22 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                 new pantallaPrincipal().setVisible(true);
             }
         });
+    }
+
+    public void crearTorneo() {
+        if ((Integer) SP_rondasTrone.getValue() > 0) {
+            ArrayList<Participante> listaParticipantes = new ArrayList();
+            Torneo torneo = new Torneo(
+                    TF_nombreTorneo.getText(), listaParticipantes,
+                    true, false, (Integer) SP_rondasTrone.getValue());
+            adminTorneos administrador = new adminTorneos("./torneos.cbm");
+            administrador.cargarArchivo();
+            administrador.setTorneo(torneo);
+            administrador.escribirArchivo();
+            torneos.add(torneo);
+        }else{
+            LB_valiTorneo.setText("debe tener almenos una ronda");
+        }
     }
 
     public void crearUsuario() {
@@ -855,8 +1050,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             LB_textoVali1.setText("El nombre ya esta tomado");
         }
     }
-    
-    public void inicio(){
+
+    public void inicio() {
         if (evaularInicioSec()) {
             this.setVisible(false);
             if (usuarios.get(logedUserindex) instanceof admin) {
@@ -917,6 +1112,13 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         usuarios = administrador.getListaUsuarios();
     }
 
+    public void inicializarTorneos() {
+        torneos = new ArrayList();
+        adminTorneos administrador = new adminTorneos("./torneos.cbm");
+        administrador.cargarArchivo();;
+        torneos = administrador.getListatorneos();
+    }
+
     public void setimageLabel(JLabel nomLabel, String ruta) {
         ImageIcon imagen = new ImageIcon(ruta);
         Icon icon = new ImageIcon(
@@ -929,6 +1131,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JCheckBox CB_admin;
     private javax.swing.JCheckBox CB_participante;
     private javax.swing.JDialog DG_adminMenu;
+    private javax.swing.JDialog DG_crearTorneo;
     private javax.swing.JDialog DG_partMenu;
     private javax.swing.JDialog DG_registrarse;
     private javax.swing.JList<String> JL_listaGanados;
@@ -942,14 +1145,20 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel LB_registrarse1;
     private javax.swing.JLabel LB_textoVali;
     private javax.swing.JLabel LB_textoVali1;
+    private javax.swing.JLabel LB_valiTorneo;
     private javax.swing.JPanel PN_InicioSec;
     private javax.swing.JPanel PN_InicioSec1;
+    private javax.swing.JPanel PN_crearTorneoConfirm;
+    private javax.swing.JPanel PN_pantallaCrearTorneo;
     private javax.swing.JPanel PN_salir;
     private javax.swing.JPanel PN_salirAdmin;
+    private javax.swing.JPanel PN_salirCrearTorneo;
     private javax.swing.JPanel PN_salirPart;
     private javax.swing.JPanel PN_salirRegis;
+    private javax.swing.JSpinner SP_rondasTrone;
     private javax.swing.JTextField TF_logContra;
     private javax.swing.JTextField TF_logUserName;
+    private javax.swing.JTextField TF_nombreTorneo;
     private javax.swing.JTextField TF_regConfirmContra;
     private javax.swing.JTextField TF_regContra;
     private javax.swing.JTextField TF_regUserName;
@@ -958,12 +1167,16 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -972,13 +1185,15 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
