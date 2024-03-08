@@ -1,18 +1,19 @@
 
-import java.awt.Image;
+import java.awt.*;
+import java.util.*;
 import javax.swing.*;
-
 
 public class pantallaPrincipal extends javax.swing.JFrame {
 
-    
+    public ArrayList<User> usuarios;
+
     public pantallaPrincipal() {
         initComponents();
+        inicializarUsuarios();
         this.setLocationRelativeTo(null);
         setimageLabel(LB_logoUnitec, "src/imagenes/unitec color.png");
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -35,6 +36,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         PN_salirRegis = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        CB_participante = new javax.swing.JCheckBox();
+        CB_admin = new javax.swing.JCheckBox();
         jSeparator5 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -105,7 +108,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             .addGroup(PN_InicioSec1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(LB_registrarse1)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PN_InicioSec1Layout.setVerticalGroup(
             PN_InicioSec1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,6 +148,12 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
+        CB_participante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CB_participante.setText("Participante");
+
+        CB_admin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CB_admin.setText("Administrador");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -156,17 +165,25 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                         .addComponent(LB_textoVali1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(198, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_regConfirmContra, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TF_regConfirmContra, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
                             .addComponent(jSeparator6)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PN_InicioSec1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator4)
                             .addComponent(jSeparator3)
                             .addComponent(TF_regContra)
-                            .addComponent(TF_regUserName))
+                            .addComponent(TF_regUserName)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(CB_participante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(PN_InicioSec1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(51, 51, 51)
+                                        .addComponent(CB_admin)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(PN_salirRegis, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))))
@@ -197,8 +214,12 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LB_textoVali1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CB_participante)
+                    .addComponent(CB_admin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(PN_InicioSec1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
 
         jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 450, 400));
@@ -399,7 +420,6 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         DG_registrarse.setVisible(true);
     }//GEN-LAST:event_LB_registrarseMouseClicked
 
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -431,7 +451,107 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-    
+
+    public void crearUsuario() {
+        LB_textoVali1.setText("");
+
+        boolean exitseNom = false;
+        for (User usuario : usuarios) {
+            if (TF_logUserName.getText().equals(usuario.getNombre())) {
+                exitseNom = true;
+            }
+        }
+
+        if (exitseNom == false) {
+            if (CB_participante.isSelected() | CB_admin.isSelected()) {
+                if (CB_participante.isSelected()) {
+                    if (TF_regContra.getText().equals(TF_regConfirmContra.getText())) {
+                        if (TF_regContra.getText().length() <= 4) {
+                            LB_textoVali1.setText("La contraseña debe ser mayor de 5 carcateres");
+                        } else {
+                            User nuevoUser = new Participante(TF_regUserName.getText(), TF_regContra.getText());
+                            agregarUser(nuevoUser);
+                        }
+                    } else {
+                        LB_textoVali1.setText("Validacion de contraseña incorrecta");
+                    }
+                }
+                if (CB_admin.isSelected()) {
+                    if (TF_regContra.getText().equals(TF_regConfirmContra.getText())) {
+                        if (TF_regContra.getText().length() <= 4) {
+                            LB_textoVali1.setText("La contraseña debe ser mayor de 5 carcateres");
+                        } else {
+                            User nuevoUser = new admin(TF_regUserName.getText(), TF_regContra.getText());
+                            agregarUser(nuevoUser);
+                        }
+                    } else {
+                        LB_textoVali1.setText("Validacion de contraseña incorrecta");
+                    }
+                }
+            } else {
+                LB_textoVali.setText("debe Selecionar una opcion de cuenta");
+            }
+        } else {
+            LB_textoVali1.setText("El nombre ya esta tomado");
+        }
+    }
+
+    public void agregarUser(User nuevoUser) {
+        adminUsuarios administrador = new adminUsuarios("./usuarios.cbm");
+        administrador.cargarArchivo();
+        administrador.setUsuario(nuevoUser);
+        administrador.escribirArchivo();
+        usuarios.add(nuevoUser);
+
+        LB_textoVali.setText("Creacion exitosa!");
+        System.out.println("");
+        TF_logUserName.setText("");
+        TF_regContra.setText("");
+        TF_regConfirmContra.setText("");
+    }
+
+    public boolean evaularInicioSec() {
+        boolean entrada = false;
+        boolean buscUsuario = false;
+
+        for (User usuario : usuarios) {
+            if (TF_logUserName.getText().equals(usuario.getNombre())) {
+                buscUsuario = true;
+            }
+        }
+
+        if (buscUsuario) {
+            for (User usuario : usuarios) {
+                if (TF_logUserName.getText().equals(usuario.getNombre())) {
+                    if (TF_logContra.getText().equals(usuario.getContra())) {
+                        TF_logContra.setText("");
+                        TF_logUserName.setText("");
+                        entrada = true;
+                        int index = 0;
+                        for (User us : usuarios) {
+                            if (us.getNombre().equals(TF_logUserName)) {
+                                break;
+                            }
+                            index++;
+                        }
+                    } else {
+                        LB_textoVali.setText("contraseña incorrecta");
+                    }
+                }
+            }
+        } else {
+            LB_textoVali.setText("usuario invalido");
+        }
+        return entrada;
+    }
+
+    public void inicializarUsuarios() {
+        usuarios = new ArrayList();
+        adminUsuarios administrador = new adminUsuarios("./usuarios.cbm");
+        administrador.cargarArchivo();
+        usuarios = administrador.getListaUsuarios();
+    }
+
     public void setimageLabel(JLabel nomLabel, String ruta) {
         ImageIcon imagen = new ImageIcon(ruta);
         Icon icon = new ImageIcon(
@@ -441,6 +561,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CB_admin;
+    private javax.swing.JCheckBox CB_participante;
     private javax.swing.JDialog DG_registrarse;
     private javax.swing.JLabel LB_inicioSec;
     private javax.swing.JLabel LB_logoUnitec;

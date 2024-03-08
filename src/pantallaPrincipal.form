@@ -69,22 +69,34 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Component id="LB_textoVali1" min="-2" pref="187" max="-2" attributes="0"/>
                                   <EmptySpace pref="198" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="TF_regConfirmContra" pref="283" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="TF_regConfirmContra" pref="327" max="32767" attributes="0"/>
                                       <Component id="jSeparator6" max="32767" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel3" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="PN_InicioSec1" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jSeparator4" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
                                       <Component id="TF_regContra" alignment="0" max="32767" attributes="0"/>
                                       <Component id="TF_regUserName" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel5" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Component id="jLabel4" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Component id="jLabel3" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="CB_participante" max="32767" attributes="0"/>
+                                                      <Component id="PN_InicioSec1" alignment="1" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                                  <Component id="CB_admin" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="PN_salirRegis" min="-2" pref="20" max="-2" attributes="0"/>
@@ -121,8 +133,13 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="LB_textoVali1" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="CB_participante" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="CB_admin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="23" max="32767" attributes="0"/>
                           <Component id="PN_InicioSec1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="85" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -200,7 +217,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Component id="LB_registrarse1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="17" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -286,6 +303,22 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JCheckBox" name="CB_participante">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Participante"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="CB_admin">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Administrador"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

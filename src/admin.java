@@ -5,7 +5,7 @@ public class admin extends User{
     public admin() {
     }
 
-    public admin(int torneoCreados, String nombre, String contra) {
+    public admin(String nombre, String contra) {
         super(nombre, contra);
         this.torneoCreados = 0;
     }
